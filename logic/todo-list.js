@@ -30,18 +30,30 @@ export class TodoList {
   }
   
   countTotalTasks() {
-    return -1
+    return this.tasks.length
   }
 
   countIncompleteTasks() {
-    return -1
+    // creates new array with only the incompleted tasks and gets the length of it
+    return this.tasks.filter(task => !task.isComplete).length;
   }
 
   countCompleteTasks() {
-    return -1
+    // creates new array with only the completed tasks and gets the length of it
+    return this.tasks.filter(task => task.isComplete).length;
   }
 
   checkIsEntireListComplete() {
-    return -1
-  }
+    // if there are no tasks the list is not completed
+    if (this.tasks.length === 0) {
+      return false;
+    }
+  
+    // if there are incomplete tasks the list is not completed
+    if (this.tasks.filter(task => !task.isComplete).length > 0) {
+      return false;
+    }
+  
+    return true;
+  }  
 }
